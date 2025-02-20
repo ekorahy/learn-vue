@@ -1,12 +1,31 @@
 <script setup>
-import { ref } from 'vue'
-import ChildComp from './components/ChildComp.vue'
+import JSConfetti from 'js-confetti'
 
-const msg = ref('from parent')
+const confetti = new JSConfetti()
+
+function showConfetti() {
+  confetti.addConfetti()
+}
+
+showConfetti()
 </script>
 
 <template>
-  <ChildComp
-    ><p>Message: {{ msg }}</p></ChildComp
-  >
+  <div class="confetti-container">
+    <h1 @click="showConfetti">🎉 Congratulation</h1>
+  </div>
 </template>
+
+<style>
+.confetti-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  cursor: pointer;
+}
+</style>
